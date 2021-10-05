@@ -8,7 +8,7 @@ This will show a random joke.
 
 ## Setup
 
-1. run `npm run pre-install`
+1. run `npm install`
 1. run `npm start`
 1. open `index.html`
 
