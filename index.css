@@ -1,0 +1,71 @@
+.container {
+  height: 100%;
+  min-width: 320px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.header {
+  justify-content: space-between;
+  padding: 100px 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.body {
+  flex-direction: column;
+  width: 100%;
+}
+
+button {
+  border-radius: 30px;
+  color: white;
+  padding: 20px;
+  width: 200px;
+}
+
+.jokeButton {
+  background-color: green;
+}
+
+.error {
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.activatePunchline {
+  background-color: blue;
+}
+
+.buttonWrapper {
+  width: 100%;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.punchlineWrapper {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.jokeWrapper {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.joke, .punchline {
+  transition: all 1s;
+  max-height: 50px;
+  /*font-size: 20px;*/
+}
+
+.preAnimation {
+  opacity:0;
+  max-height: 0;
+}

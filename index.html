@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jokes</title>
+  <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+  <div class="container">
+    <div class="flex header">
+      <button class="jokeButton">Get A New Random Joke</button>
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/15Dkatz/official_joke_api">View API Docs</a>
+    </div>
+    <div class="flex body">
+      <div class="loader">LOADING YOUR JOKE...</div>
+      <div class="error hidden">THERE WAS AN ERROR LOADING YOUR JOKE.</div>
+      <div class="flex body">
+        <div class="flex jokeWrapper">
+          <div class="joke"></div>
+        </div>
+        <div class="flex buttonWrapper">
+          <button class="activatePunchline hidden"></button>
+        </div>
+        <div class="flex punchlineWrapper">
+          <div class="punchline preAnimation"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    let punchlineAnswer;
+    const loader = getElement('.loader');
+    const error = getElement('.error');
+    const joke = getElement('.joke');
+    const activatePunchline = getElement('.activatePunchline');
+    const punchline = getElement('.punchline');
+
+    function getElement(element) {
+      return document.querySelector(element);
+    }
+
+    function getJoke() {
+      fetch('http://localhost:3005/random_joke', {
+        method: 'GET'
+      })
+      .then(res => res.json())
+      .then(res => {
+        // set default
+        punchline.classList.add('preAnimation');
+        loader.classList.add('hidden');
+        error.classList.add('hidden');
+        punchline.innerHTML = '';
+        activatePunchline.innerHTML = "Show Punchline";
+        activatePunchline.classList.remove('hidden');
+        joke.innerHTML = res.setup;
+        punchlineAnswer = res.punchline;
+      })
+      .catch(err => {
+        const error = getElement('.error');
+        error.classList.remove('hidden');
+      });
+    }
+
+    // want to setup only one listener
+    // don't have to remove and re add if its outside of fetch
+    activatePunchline.addEventListener('click', () => {
+      if(punchline.innerHTML === '') {
+        activatePunchline.innerHTML = "Hide Punchline";
+        punchline.innerHTML = punchlineAnswer;
+        punchline.classList.remove('preAnimation');
+      } else {
+        activatePunchline.innerHTML = "Show Punchline";
+        punchline.innerHTML = '';
+        punchline.classList.add('preAnimation');
+      }
+    });
+    getJoke();
+    document.querySelector('.jokeButton').addEventListener('click', getJoke);
+  </script>
+</body>
+</html>
