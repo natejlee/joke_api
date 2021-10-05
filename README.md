@@ -1,12 +1,12 @@
-* Jokes API
+# Jokes API
 
 This will show a random joke.
 
-** Requirements
+## Requirements
 
 1. Node, any version
 
-** Setup
+## Setup
 
 1. run `npm run pre-install`
 1. run `npm start`
