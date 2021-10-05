@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./official_joke_api",
+    "start": "node ./node_modules/official_joke_api",
     "pre-install": "npm install ./official_joke_api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/natejlee/joke_api#readme",
   "dependencies": {
-    "official_joke_api": "file:official_joke_api"
+    "official_joke_api": "https://github.com/15Dkatz/official_joke_api.git"
   }
 }
